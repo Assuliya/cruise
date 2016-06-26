@@ -11,8 +11,9 @@
   		$(function() {
     		$( "#datepicker, #todatepicker" ).datepicker();
 			});
+
   		$("form").submit(function(){
-  			alert("Thanks " + "! Your Cruise leaves on " + " and returns on " + "!")
+  			alert("Thanks " + $("#name").val() + "! Your Cruise leaves on " + $("#datepicker").val() + " and returns on " + $("#todatepicker").val() + "!")
   			return false;
   		});
   	});
@@ -23,7 +24,7 @@
 		<h1>Welcome to the Codingdojo plan-a-Cruise!</h1>
 		<p>Date: <input type="text" id="datepicker"></p>
 		<p>To: <input type="text" id="todatepicker"></p>
-		<label><input type="text" name="name"></label>
+		<label><input type="text" id="name" name="name"></label>
 		<label><input type="submit" name="submit" value="Check dates!"></label>
 	</form>
 </body>
