@@ -8,11 +8,23 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
   	<script type="text/javascript">
   	$(document).ready(function(){
-  		
+  		$(function() {
+    		$( "#datepicker, #todatepicker" ).datepicker();
+			});
+  		$("form").submit(function(){
+  			alert("Thanks " + "! Your Cruise leaves on " + " and returns on " + "!")
+  			return false;
+  		});
   	});
   	</script>
 </head>
 <body>
-
+	<form>
+		<h1>Welcome to the Codingdojo plan-a-Cruise!</h1>
+		<p>Date: <input type="text" id="datepicker"></p>
+		<p>To: <input type="text" id="todatepicker"></p>
+		<label><input type="text" name="name"></label>
+		<label><input type="submit" name="submit" value="Check dates!"></label>
+	</form>
 </body>
 </html>
