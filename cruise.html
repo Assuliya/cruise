@@ -9,25 +9,32 @@
   	<script type="text/javascript">
   	$(document).ready(function(){
   		$(function() {
-    		$( "#datepicker, #todatepicker" ).datepicker();
+    		$( '#datepicker, #todatepicker' ).datepicker();
 			});
 
   		$("form").submit(function(){
   			if ($('#datepicker').val() == ''){
-  				alert("Your from-date can't be blank!")
+  				$('p4').text("Your from-date can't be blank!") //for some reason (p id or class) didn't work, so I used p2,p3,p4 to distinguish them.
+  				$('#submit').css('background-color', 'red');
   			}
-  			else if ($('#todatepicker').val() == ''){
-  				alert("Your to-date can't be blank!")
+  			if ($('#todatepicker').val() == ''){
+  				$('p3').text("Your to-date can't be blank!")
+  				$('#submit').css('background-color', 'red');
   			}
-  			else if ($('#name').val() == ''){
-  				alert("Your name can't be blank!")
+  			if ($('#name').val() == ''){
+  				$('p2').text("Your name can't be blank!")
+  				$('#submit').css('background-color', 'red');
+  			}
+  			if ($('#name').val() != '' & $('#todatepicker').val() == '' ||$('#datepicker').val() == ''){
+  				$('#submit').css('background-color', 'pink'); //This if is needed to prevent the system going to "else" when only the name is filled in.
   			}
   			else {
-  				alert("Thanks " + $("#name").val() + "! Your Cruise leaves on " + $("#datepicker").val() + " and returns on " + $("#todatepicker").val() + "!");
-  				$(".input").val("");
+  				alert('Thanks ' + $('#name').val() + '! Your Cruise leaves on ' + $('datepicker').val() + ' and returns on ' + $('#todatepicker').val() + '!');
+  				$('.input').val('');
+  				$('p2, p3, p4').text('');
+  				$('#submit').css('background-color', 'white');
   				
   			}
-  			
   			return false;
 
   		});
@@ -37,9 +44,10 @@
 <body>
 	<form>
 		<h1>Welcome to the Codingdojo plan-a-Cruise!</h1>
-		<p>Date: <input class="input" type="text" id="datepicker"></p>
-		<p>To: <input class="input" type="text" id="todatepicker"></p>
-		<label><input class="input" type="text" id="name"></label>
+		<p><input class="input" type="text" id="datepicker" placeholder="From:"></p><p4></p4>
+		<p><input class="input" type="text" id="todatepicker" placeholder="To:"></p><p3></p3>
+		<label><input class="input" type="text" id="name" placeholder="Name:"></label><p2></p2>
+		<br><br>
 		<label><input type="submit" id="submit" value="Check dates!"></label>
 	</form>
 </body>
